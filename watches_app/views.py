@@ -52,9 +52,11 @@ def men(request):
     colors = Colors.objects.all()
     sizes = Sizes.objects.all()
 
+    products = Product.objects.all()
     return render(request, 'watches/men.html', {'categories': categories,
                                                 'colors': colors,
-                                                'sizes': sizes})
+                                                'sizes': sizes,
+                                                'products':products})
 
 
 def register(request):
