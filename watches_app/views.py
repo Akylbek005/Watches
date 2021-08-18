@@ -42,9 +42,9 @@ def login(request):
     return render(request, 'watches/login.html')
 
 
-def single(request):
-    product = Product.objects.get(id=1)
-    return render(request, 'watches/single.html', {'product': product})
+def single(request, slug, category):
+    product = Product.objects.get(slug=slug, category__slug=category)
+    return render(request, 'watches/product_detail.html', {'product': product})
 
 
 def men(request):
@@ -52,11 +52,11 @@ def men(request):
     colors = Colors.objects.all()
     sizes = Sizes.objects.all()
 
-    products = Product.objects.all()
-    return render(request, 'watches/men.html', {'categories': categories,
-                                                'colors': colors,
-                                                'sizes': sizes,
-                                                'products':products})
+    products = Product.objects.all()[:9]
+    return render(request, 'watches/men_list.html', {'categories': categories,
+                                                     'colors': colors,
+                                                     'sizes': sizes,
+                                                     'products': products})
 
 
 def register(request):

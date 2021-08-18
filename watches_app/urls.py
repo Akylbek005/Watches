@@ -8,7 +8,7 @@ urlpatterns = [
     path('contact/', contact, name='contact'),
     path('checkout/', checkout, name='checkout'),
     path('login/', login, name='login'),
-    path('single/', single, name='single'),
     path('men/', men, name='men'),
+    path('<str:category>/<str:slug>/', single, name='product_detail'),
     path('register/', register, name='register')
 ]
