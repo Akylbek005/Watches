@@ -88,7 +88,7 @@
 	    <div class="menu">
 	     <ul class="megamenu skyblue">
 
-			<li class="{% block active_men %}color2{% endblock %}"> <a class="color3" href="{% url 'men' %}">Mens</a>
+			<li class="{% block active_men %}color2{% endblock %}"> <a class="color3" href="{% url 'men' %}">All</a>
 				<div class="megapanel">
 					<div class="row">
 						<div class="col1">
@@ -166,91 +166,13 @@
 							</div>
 						</div>
 					  </div>
-					</div></li>
-			<li class="{% block active_women %}color4{% endblock %}"> <a class="color3" href="{% url 'men' %}">womens</a>
-				<div class="megapanel">
-					<div class="row">
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Men</h4>
-								<ul>
-									<li><a href="men.html">Watches</a></li>
-									<li><a href="men.html">watches</a></li>
-									<li><a href="men.html">Blazers</a></li>
-									<li><a href="men.html">Suits</a></li>
-									<li><a href="men.html">Trousers</a></li>
-									<li><a href="men.html">Jeans</a></li>
-									<li><a href="men.html">Shirts</a></li>
-									<li><a href="men.html">Sweatshirts & Hoodies</a></li>
-									<li><a href="men.html">Swim Wear</a></li>
-									<li><a href="men.html">Accessories</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col1">
-							<div class="h_nav">
-								<h4>Women</h4>
-								<ul>
-									<li><a href="men.html">Watches</a></li>
-									<li><a href="men.html">Outerwear</a></li>
-									<li><a href="men.html">Dresses</a></li>
-									<li><a href="men.html">Handbags</a></li>
-									<li><a href="men.html">Trousers</a></li>
-									<li><a href="men.html">Jeans</a></li>
-									<li><a href="men.html">T-Shirts</a></li>
-									<li><a href="men.html">Shoes</a></li>
-									<li><a href="men.html">Coats</a></li>
-									<li><a href="men.html">Accessories</a></li>
-								</ul>
-							</div>
-						</div>
-						<div class="col2">
-							<div class="h_nav">
-								<h4>Trends</h4>
-								<ul>
-									<li class>
-										<div class="p_left">
-										  <img src="{% static 'images/p1.jpg' %}" class="img-responsive" alt=""/>
-										</div>
-										<div class="p_right">
-											<h4><a href="#">Denim shirt</a></h4>
-											<span class="item-cat"><small><a href="#">watches</a></small></span>
-											<span class="price">29.99 $</span>
-										</div>
-										<div class="clearfix"> </div>
-									</li>
-									<li>
-										<div class="p_left">
-										  <img src="{% static 'images/p2.jpg' %}" class="img-responsive" alt=""/>
-										</div>
-										<div class="p_right">
-											<h4><a href="#">Denim shirt</a></h4>
-											<span class="item-cat"><small><a href="#">watches</a></small></span>
-											<span class="price">29.99 $</span>
-										</div>
-										<div class="clearfix"> </div>
-									</li>
-									<li>
-										<div class="p_left">
-										  <img src="{% static 'images/p3.jpg' %}" class="img-responsive" alt=""/>
-										</div>
-										<div class="p_right">
-											<h4><a href="#">Denim shirt</a></h4>
-											<span class="item-cat"><small><a href="#">watches</a></small></span>
-											<span class="price">29.99 $</span>
-										</div>
-										<div class="clearfix"> </div>
-									</li>
-								</ul>
-							</div>
-						</div>
-					  </div>
-					</div></li>
+					</div>
+			</li>
 
-				<li class="{% block active_brands %}color5{% endblock %}"><a class="color3" href="{% url 'brands' %}">Brands</a></li>
-				<li class="{% block active_sale %}color6{% endblock %}"><a class="color3" href="{% url 'index' %}">Sale</a></li>
-				<li class="{% block active %}color7{% endblock %}"> <a class="color3" href="#">News</a></li>
-				<div class="clearfix"> </div>
+			<li class="{% block active_brands %}color5{% endblock %}"><a class="color3" href="{% url 'brands' %}">Brands</a></li>
+			 <li class="{% block active_news %}color7{% endblock %}"> <a class="color3" href="{% url 'news' %}">News</a></li>
+			<li class="{% block active_sale %}color6{% endblock %}"><a class="color3" href="{% url 'index' %}">Sale</a></li>
+			<div class="clearfix"> </div>
 
 			</ul>
 			</div>

@@ -1,4 +1,3 @@
-from django.contrib import admin
 from django.urls import path, include
 from .views import *
 
@@ -10,5 +9,6 @@ urlpatterns = [
     path('login/', login, name='login'),
     path('men/', men, name='men'),
     path('<str:category>/<str:slug>/', single, name='product_detail'),
-    path('register/', register, name='register')
+    path('register/', register, name='register'),
+    path('news/', news, name='news'),
 ]

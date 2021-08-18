@@ -44,7 +44,11 @@ def login(request):
 
 def single(request, slug, category):
     product = Product.objects.get(slug=slug, category__slug=category)
-    return render(request, 'watches/product_detail.html', {'product': product})
+    category = Category.objects.get(slug=category)
+    recommendation_products = Product.objects.filter(category=category)
+
+    return render(request, 'watches/product_detail.html', {'product': product,
+                                                           'recommendation_products': recommendation_products})
 
 
 def men(request):
@@ -52,7 +56,7 @@ def men(request):
     colors = Colors.objects.all()
     sizes = Sizes.objects.all()
 
-    products = Product.objects.all()[:9]
+    products = Product.objects.all()[:9][::-1]
     return render(request, 'watches/men_list.html', {'categories': categories,
                                                      'colors': colors,
                                                      'sizes': sizes,
@@ -61,3 +65,7 @@ def men(request):
 
 def register(request):
     return render(request, 'watches/register.html')
+
+
+def news(request):
+    return render(request, 'watches/news.html')

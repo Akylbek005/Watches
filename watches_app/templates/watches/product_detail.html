@@ -123,16 +123,20 @@
 		</div>
 		<div class="col-md-3 tabs">
 	      <h3 class="m_1">Related Products</h3>
-	      <ul class="product">
-	      	<li class="product_img"><img src="{% static 'images/m5.jpg' %}" class="img-responsive" alt=""/></li>
-	      	<li class="product_desc">
-	      		<h4><a href="#">quod mazim</a></h4>
-	      		<p class="single_price">$66.30</p>
-	      		<a href="#" class="link-cart">Add to Wishlist</a>
-	      	    <a href="#" class="link-cart">Add to Cart</a>
-	        </li>
-	      	<div class="clearfix"> </div>
-	      </ul>
+			{% for recommendation in recommendation_products %}
+			  <ul class="product">
+				  <a href="{{ recommendation.get_absolute_url }}"><li class="product_img">
+					  <img src="{{ recommendation.images_1.url }}" class="img-responsive" alt=""/></li>
+				  </a>
+				<li class="product_desc">
+					<h4><a href="{{ recommendation.get_absolute_url }}">{{ recommendation.name }}</a></h4>
+					<p class="single_price">${{ recommendation.price }}</p>
+					<a href="#" class="link-cart">Add to Wishlist</a>
+					<a href="#" class="link-cart">Add to Cart</a>
+				</li>
+				<div class="clearfix"> </div>
+			  </ul>
+			{% endfor %}
         </div>
      <div class="clearfix"> </div>
 	</div>
