@@ -39,10 +39,10 @@ def product_list(request):
     sizes = Sizes.objects.all()
 
     products = Product.objects.all()[:9][::-1]
-    return render(request, 'watches/men_list.html', {'categories': categories,
-                                                     'colors': colors,
-                                                     'sizes': sizes,
-                                                     'products': products})
+    return render(request, 'watches/product_list.html', {'categories': categories,
+                                                         'colors': colors,
+                                                         'sizes': sizes,
+                                                         'products': products})
 
 
 def register(request):
