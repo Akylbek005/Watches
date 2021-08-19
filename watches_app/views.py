@@ -16,24 +16,6 @@ def index(request):
     return render(request, 'watches/index.html')
 
 
-def contact(request):
-    if request.method == 'POST':
-        contact = ContactForm(request.POST)
-        if contact.is_valid():
-            subject = contact.cleaned_data.get('subject')
-            email = contact.cleaned_data.get('email')
-            message = contact.cleaned_data.get('message')
-            name = contact.cleaned_data.get('name')
-            send_mail(f'Отзыв от {name}.Тема отзыва: {subject}',
-                      f'{message}\n'
-                      f'Email пользователя - {email}',
-                      EMAIL_HOST_USER,
-                      [EMAIL_HOST_USER, ])
-        return render(request, 'watches/contact.html', {'form': 'Отзыв успешно отправлен'})
-    else:
-        return render(request, 'watches/contact.html')
-
-
 def checkout(request):
     return render(request, 'watches/checkout.html')
 
@@ -42,8 +24,8 @@ def login(request):
     return render(request, 'watches/login.html')
 
 
-def single(request, slug, category):
-    product = Product.objects.get(slug=slug, category__slug=category)
+def product_detail(request, slug, category):
+    product = Product.objects.get(slug=slug)
     category = Category.objects.get(slug=category)
     recommendation_products = Product.objects.filter(category=category)
 
@@ -51,7 +33,7 @@ def single(request, slug, category):
                                                            'recommendation_products': recommendation_products})
 
 
-def men(request):
+def product_list(request):
     categories = Category.objects.all()
     colors = Colors.objects.all()
     sizes = Sizes.objects.all()
@@ -69,3 +51,21 @@ def register(request):
 
 def news(request):
     return render(request, 'watches/news.html')
+
+
+def contact(request):
+    if request.method == 'POST':
+        contact = ContactForm(request.POST)
+        if contact.is_valid():
+            subject = contact.cleaned_data.get('subject')
+            email = contact.cleaned_data.get('email')
+            message = contact.cleaned_data.get('message')
+            name = contact.cleaned_data.get('name')
+            send_mail(f'Отзыв от {name}.Тема отзыва: {subject}',
+                      f'{message}\n'
+                      f'Email пользователя - {email}',
+                      EMAIL_HOST_USER,
+                      [EMAIL_HOST_USER, ])
+        return render(request, 'watches/contact.html', {'form': 'Отзыв успешно отправлен'})
+    else:
+        return render(request, 'watches/contact.html')
