@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.mail import send_mail
-from django.contrib.auth import login as login_auth
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .forms import ContactForm
 from watches.settings import EMAIL_HOST_USER
@@ -25,9 +25,8 @@ def login(request):
 
 
 def product_detail(request, slug, category):
-    product = Product.objects.get(slug=slug)
-    category = Category.objects.get(slug=category)
-    recommendation_products = Product.objects.filter(category=category)
+    product = get_object_or_404(Product, slug=slug)
+    recommendation_products = Product.objects.filter(category__slug=category)
 
     return render(request, 'watches/product_detail.html', {'product': product,
                                                            'recommendation_products': recommendation_products})
@@ -37,8 +36,20 @@ def product_list(request):
     categories = Category.objects.all()
     colors = Colors.objects.all()
     sizes = Sizes.objects.all()
+    products = Product.objects.all()[::-1]
 
-    products = Product.objects.all()[:9][::-1]
+    if request.GET.get('category'):
+        category = request.GET.get('category')
+        products = Product.objects.filter(category__slug=category)
+
+    elif request.GET.get('color'):
+        color = request.GET.get('color')
+        products = Product.objects.filter(color__slug=color)
+
+    elif request.GET.get('size'):
+        size = request.GET.get('size')
+        products = Product.objects.filter(size__slug=size)
+
     return render(request, 'watches/product_list.html', {'categories': categories,
                                                          'colors': colors,
                                                          'sizes': sizes,
