@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Category, Colors, Sizes
+from .models import *
 
 
 @admin.register(Product)
@@ -23,3 +23,8 @@ class ProductAdmin(admin.ModelAdmin):
 @admin.register(Sizes)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('size', )
+
+
+@admin.register(EmailNewsLetter)
+class EmailNewsLetterAdmin(admin.ModelAdmin):
+    list_display = ('email', )

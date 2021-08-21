@@ -78,3 +78,13 @@ class Product(models.Model):
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
 
+
+class EmailNewsLetter(models.Model):
+    email = models.EmailField(verbose_name='Email', unique=True)
+
+    def __str__(self):
+        return self.email
+
+    class Meta:
+        verbose_name = 'Эмаил для рассылки'
+        verbose_name_plural = 'Эмаилы для рассылки'
