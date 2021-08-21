@@ -8,10 +8,11 @@
     	<div class="col-md-4 sidebar_men">
     	  <h3>Категории</h3>
     	  <ul class="product-categories color">
-			  <li class="cat-item cat-item-41"><a href="{% url 'product_list' %}">Все</a><span class="count">(10)</span></li>
+			  <li class="cat-item cat-item-41"><a href="{% url 'product_list' %}">Все</a>
+				  <span class="count">({{ all_count|length }})</span></li>
 			{% for category in categories %}
 				<li class="cat-item cat-item-41"><a href="?category={{ category.slug }}">{{ category }}</a>
-					<span class="count">({{ category.product_set.all|length }})</span></li>
+					<span class="count">({{ category.category.count }})</span></li>
 			{% endfor %}
 		 </ul>
 		  <h3>Цвета</h3>
@@ -98,8 +99,8 @@
 			                       		<div class="info">Quick View</div>
 					                 </div>
 					                 <div class="product_container">
-									   <h4>Lorem 2015</h4>
-									   <p>Dresses</p>
+									   <h4>{{ product.name }}</h4>
+									   <p>{{ product.category.name }}</p>
 									   <div class="price mount item_price">${{ product.price }}</div>
 									   <a class="button item_add cbp-vm-icon cbp-vm-add" href="#">Add to cart</a>
 									 </div>		

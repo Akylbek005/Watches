@@ -37,6 +37,7 @@ def product_list(request):
     colors = Colors.objects.all()
     sizes = Sizes.objects.all()
     products = Product.objects.all()[::-1]
+    all_count = products
 
     if request.GET.get('category'):
         category = request.GET.get('category')
@@ -53,7 +54,8 @@ def product_list(request):
     return render(request, 'watches/product_list.html', {'categories': categories,
                                                          'colors': colors,
                                                          'sizes': sizes,
-                                                         'products': products})
+                                                         'products': products,
+                                                         'all_count': all_count})
 
 
 def register(request):
